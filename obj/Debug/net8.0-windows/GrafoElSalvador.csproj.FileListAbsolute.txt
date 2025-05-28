@@ -1,0 +1,15 @@
+C:\Users\josue\source\repos\GrafoElSalvador\obj\Debug\net8.0-windows\GrafoElSalvador.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\josue\source\repos\GrafoElSalvador\obj\Debug\net8.0-windows\GrafoElSalvador.AssemblyInfoInputs.cache
+C:\Users\josue\source\repos\GrafoElSalvador\obj\Debug\net8.0-windows\GrafoElSalvador.AssemblyInfo.cs
+C:\Users\josue\source\repos\GrafoElSalvador\obj\Debug\net8.0-windows\GrafoElSalvador.csproj.CoreCompileInputs.cache
+C:\Users\josue\source\repos\GrafoElSalvador\bin\Debug\net8.0-windows\GrafoElSalvador.exe
+C:\Users\josue\source\repos\GrafoElSalvador\bin\Debug\net8.0-windows\GrafoElSalvador.deps.json
+C:\Users\josue\source\repos\GrafoElSalvador\bin\Debug\net8.0-windows\GrafoElSalvador.runtimeconfig.json
+C:\Users\josue\source\repos\GrafoElSalvador\bin\Debug\net8.0-windows\GrafoElSalvador.dll
+C:\Users\josue\source\repos\GrafoElSalvador\bin\Debug\net8.0-windows\GrafoElSalvador.pdb
+C:\Users\josue\source\repos\GrafoElSalvador\obj\Debug\net8.0-windows\GrafoElSalvador.dll
+C:\Users\josue\source\repos\GrafoElSalvador\obj\Debug\net8.0-windows\refint\GrafoElSalvador.dll
+C:\Users\josue\source\repos\GrafoElSalvador\obj\Debug\net8.0-windows\GrafoElSalvador.pdb
+C:\Users\josue\source\repos\GrafoElSalvador\obj\Debug\net8.0-windows\GrafoElSalvador.genruntimeconfig.cache
+C:\Users\josue\source\repos\GrafoElSalvador\obj\Debug\net8.0-windows\ref\GrafoElSalvador.dll
+C:\Users\josue\source\repos\GrafoElSalvador\bin\Debug\net8.0-windows\mapa_elsalvador_detallado.png
