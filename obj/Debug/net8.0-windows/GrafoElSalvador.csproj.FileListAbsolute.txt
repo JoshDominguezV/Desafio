@@ -13,3 +13,13 @@ C:\Users\josue\source\repos\GrafoElSalvador\obj\Debug\net8.0-windows\GrafoElSalv
 C:\Users\josue\source\repos\GrafoElSalvador\obj\Debug\net8.0-windows\GrafoElSalvador.genruntimeconfig.cache
 C:\Users\josue\source\repos\GrafoElSalvador\obj\Debug\net8.0-windows\ref\GrafoElSalvador.dll
 C:\Users\josue\source\repos\GrafoElSalvador\bin\Debug\net8.0-windows\mapa_elsalvador_detallado.png
+C:\Users\josue\source\repos\GrafoElSalvador\obj\Debug\net8.0-windows\GrafoElSalvador.sourcelink.json
+C:\Users\josue\source\repos\GrafoElSalvador\bin\Debug\net8.0-windows\GMap.NET.Core.dll
+C:\Users\josue\source\repos\GrafoElSalvador\bin\Debug\net8.0-windows\GMap.NET.WindowsForms.dll
+C:\Users\josue\source\repos\GrafoElSalvador\obj\Debug\net8.0-windows\GrafoElSalvador.csproj.AssemblyReference.cache
+C:\Users\josue\source\repos\GrafoElSalvador\obj\Debug\net8.0-windows\GrafoElS.B5735374.Up2Date
+C:\Users\josue\source\repos\GrafoElSalvador\bin\Debug\net8.0-windows\System.Data.SQLite.dll
+C:\Users\josue\source\repos\GrafoElSalvador\bin\Debug\net8.0-windows\runtimes\linux-x64\native\SQLite.Interop.dll
+C:\Users\josue\source\repos\GrafoElSalvador\bin\Debug\net8.0-windows\runtimes\osx-x64\native\SQLite.Interop.dll
+C:\Users\josue\source\repos\GrafoElSalvador\bin\Debug\net8.0-windows\runtimes\win-x64\native\SQLite.Interop.dll
+C:\Users\josue\source\repos\GrafoElSalvador\bin\Debug\net8.0-windows\runtimes\win-x86\native\SQLite.Interop.dll

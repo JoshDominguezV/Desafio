@@ -1,8 +1,23 @@
 {
   "version": 2,
-  "dgSpecHash": "cDgqkGpREoc=",
+  "dgSpecHash": "yDydpTZeTjA=",
   "success": true,
   "projectFilePath": "C:\\Users\\josue\\source\\repos\\GrafoElSalvador\\GrafoElSalvador.csproj",
-  "expectedPackageFiles": [],
-  "logs": []
+  "expectedPackageFiles": [
+    "C:\\Users\\josue\\.nuget\\packages\\gmap.net.windowsforms\\1.7.5\\gmap.net.windowsforms.1.7.5.nupkg.sha512",
+    "C:\\Users\\josue\\.nuget\\packages\\stub.system.data.sqlite.core.netstandard\\1.0.119\\stub.system.data.sqlite.core.netstandard.1.0.119.nupkg.sha512",
+    "C:\\Users\\josue\\.nuget\\packages\\system.data.sqlite.core\\1.0.119\\system.data.sqlite.core.1.0.119.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "El paquete \"GMap.NET.WindowsForms 1.7.5\" se restauró con \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1\" en lugar de la plataforma de destino del proyecto \"net8.0-windows7.0\". Puede que el paquete no sea totalmente compatible con el proyecto.",
+      "libraryId": "GMap.NET.WindowsForms",
+      "targetGraphs": [
+        "net8.0-windows7.0"
+      ]
+    }
+  ]
 }

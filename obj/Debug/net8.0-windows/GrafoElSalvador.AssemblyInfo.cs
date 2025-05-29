@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GrafoElSalvador")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d1c938b1976e76d8a8455bd058ba683fd3a7e43a")]
 [assembly: System.Reflection.AssemblyProductAttribute("GrafoElSalvador")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GrafoElSalvador")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
