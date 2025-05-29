@@ -22,19 +22,61 @@ namespace GrafoElSalvador
             LoadRoutesFromFile();
         }
 
+
         private void LoadRoutesFromFile()
         {
             if (!File.Exists(archivoRutas)) return;
 
-            var json = File.ReadAllText(archivoRutas);
-            var rawData = JsonSerializer.Deserialize<Dictionary<string, List<double[]>>>(json);
-
-            foreach (var kv in rawData)
+            try
             {
-                rutasCache[kv.Key] = kv.Value.Select(c => new PointLatLng(c[0], c[1])).ToList();
+                // Verificar si el archivo está vacío
+                if (new FileInfo(archivoRutas).Length == 0)
+                {
+                    File.Delete(archivoRutas);
+                    return;
+                }
+
+                var json = File.ReadAllText(archivoRutas);
+
+                // Verificar si el contenido es nulo o vacío
+                if (string.IsNullOrWhiteSpace(json))
+                {
+                    File.Delete(archivoRutas);
+                    return;
+                }
+
+                var rawData = JsonSerializer.Deserialize<Dictionary<string, List<double[]>>>(json);
+
+                // Si la deserialización devuelve null (archivo JSON inválido o vacío)
+                if (rawData == null)
+                {
+                    File.Delete(archivoRutas);
+                    return;
+                }
+
+                // Si el diccionario está vacío
+                if (rawData.Count == 0)
+                {
+                    File.Delete(archivoRutas);
+                    return;
+                }
+
+                // Si todo está bien, cargar los datos
+                foreach (var kv in rawData)
+                {
+                    rutasCache[kv.Key] = kv.Value.Select(c => new PointLatLng(c[0], c[1])).ToList();
+                }
+            }
+            catch (JsonException) // Si hay error en el formato JSON
+            {
+                File.Delete(archivoRutas);
+            }
+            catch (Exception ex) // Otros errores inesperados
+            {
+                // Opcional: puedes loguear el error si quieres
+                File.Delete(archivoRutas);
             }
         }
-
         private void SaveRouteToFile(string key, List<PointLatLng> points)
         {
             var data = new Dictionary<string, List<double[]>>();
@@ -50,6 +92,29 @@ namespace GrafoElSalvador
             var json = JsonSerializer.Serialize(data, new JsonSerializerOptions { WriteIndented = true });
             File.WriteAllText(archivoRutas, json);
         }
+
+        public double GetDistance(CityNode from, CityNode to)
+        {
+            var earthRadiusKm = 6371;
+
+            double dLat = DegreesToRadians(to.Latitude - from.Latitude);
+            double dLon = DegreesToRadians(to.Longitude - from.Longitude);
+
+            double lat1 = DegreesToRadians(from.Latitude);
+            double lat2 = DegreesToRadians(to.Latitude);
+
+            double a = Math.Sin(dLat / 2) * Math.Sin(dLat / 2) +
+                       Math.Sin(dLon / 2) * Math.Sin(dLon / 2) * Math.Cos(lat1) * Math.Cos(lat2);
+            double c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
+
+            return earthRadiusKm * c;
+        }
+
+        private double DegreesToRadians(double degrees)
+        {
+            return degrees * Math.PI / 180;
+        }
+
 
         public async Task<List<PointLatLng>> GetRouteAsync(CityNode start, CityNode end)
         {

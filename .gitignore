@@ -11,6 +11,7 @@ obj/
 
 # Build results
 *.dll
+
 *.exe
 *.pdb
 *.cache
