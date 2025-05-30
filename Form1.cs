@@ -561,6 +561,7 @@ namespace GrafoElSalvador
                 {
                     gMap.Overlays.Remove(recorridoOverlay);
                     gMap.Refresh();
+                    Tag = $"Nodo Inicial {nodoInicial.Name}";
                 }
                 recorridoVisible = false;
                 return;
@@ -589,6 +590,7 @@ namespace GrafoElSalvador
                 {
                     gMap.Overlays.Remove(recorridoOverlay);
                     gMap.Refresh();
+                    Tag = $"Nodo Inicial {nodoInicial.Name}";
                 }
                 recorridoVisible = false;
                 return;
