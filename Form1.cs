@@ -471,7 +471,7 @@ namespace GrafoElSalvador
                 {
                     var route = new GMapRoute(points, $"{from.Name}-{to.Name}")
                     {
-                        Stroke = new Pen(Color.Red, 3), // Ruta en rojo y más gruesa
+                        Stroke = new Pen(Color.Green, 10), // Ruta en rojo y más gruesa
                         Tag = $"{from.Name} ↔ {to.Name}",
                     };
                     edgesOverlay.Routes.Add(route);
