@@ -38,6 +38,10 @@ namespace GrafoElSalvador
         private bool mostrandoMST = false; // Indica si se está mostrando el árbol de expansión mínima
         private bool rutasVisibles = false; // Controla la visibilidad de todas las rutas
 
+        private bool recorridoVisible = false; // Controla si hay un recorrido visible
+        private ToolTip routeToolTip = new ToolTip();
+
+
         public Form1()
         {
             // Configuración inicial de la ventana principal
@@ -68,6 +72,12 @@ namespace GrafoElSalvador
             InitializeMap(); // Configura el control del mapa
             InitializeControls(); // Configura los controles de la interfaz
             CreateGraph(); // Construye el grafo de ciudades
+
+            gMap.OnRouteEnter += GMap_OnRouteEnter;
+            gMap.OnRouteLeave += GMap_OnRouteLeave;
+            gMap.MouseMove += GMap_MouseMove;
+
+
 
             // Inicializa el servicio de rutas con la API key y archivo de cache
             routeService = new RouteService(
@@ -241,7 +251,7 @@ namespace GrafoElSalvador
                 },
                 {
                     "Sensuntepeque",
-                    new List<string> { "San Vicente", "San Salvador" }
+                    new List<string> { "San Vicente", "San Francisco Gotera"}
                 },
                 {
                     "Chalatenango",
@@ -249,7 +259,7 @@ namespace GrafoElSalvador
                 },
                 {
                     "Cojutepeque",
-                    new List<string> { "San Francisco Gotera", "San Vicente" }
+                    new List<string> { "San Vicente","San Salvador", }
                 },
                 {
                     "Santa Tecla (Nueva San Salvador)",
@@ -301,6 +311,58 @@ namespace GrafoElSalvador
             cbDestino.Items.AddRange(cities.Select(c => c.Name).ToArray());
         }
 
+        private void GMap_MouseMove(object sender, MouseEventArgs e)
+        {
+            var latLng = gMap.FromLocalToLatLng(e.X, e.Y);
+            const double tolerance = 0.001;
+
+            List<string> rutasCercanas = new List<string>();
+
+            foreach (var route in edgesOverlay.Routes)
+            {
+                foreach (var point in route.Points)
+                {
+                    double distanceLat = Math.Abs(point.Lat - latLng.Lat);
+                    double distanceLng = Math.Abs(point.Lng - latLng.Lng);
+
+                    if (distanceLat < tolerance && distanceLng < tolerance)
+                    {
+                        if (route.Tag is string textoRuta && !rutasCercanas.Contains(textoRuta))
+                        {
+                            rutasCercanas.Add(textoRuta);
+                            break; 
+                        }
+                    }
+                }
+            }
+
+            if (rutasCercanas.Count > 0)
+            {
+                var textoTooltip = string.Join("\n", rutasCercanas);
+                var mousePos = gMap.PointToClient(Cursor.Position);
+                routeToolTip.Show(textoTooltip, gMap, mousePos.X + 10, mousePos.Y + 10, 2000);
+            }
+            else
+            {
+                routeToolTip.Hide(gMap);
+            }
+        }
+
+
+        private void GMap_OnRouteEnter(GMapRoute route)
+        {
+            if (route.Tag is string textoRuta)
+            {
+                var mousePos = gMap.PointToClient(Cursor.Position);
+                routeToolTip.Show(textoRuta, gMap, mousePos.X + 10, mousePos.Y + 10, 3000);
+            }
+        }
+
+        private void GMap_OnRouteLeave(GMapRoute route)
+        {
+            routeToolTip.Hide(gMap);
+        }
+
         /// <summary>
         /// Dibuja el grafo en el mapa de manera asíncrona
         /// </summary>
@@ -345,13 +407,14 @@ namespace GrafoElSalvador
                         var route = new GMapRoute(points, $"{edge.From.Name}-{edge.To.Name}")
                         {
                             Stroke = new Pen(Color.LightBlue, 1), // Estilo de la línea
-                                                               
 
-                            Tag = edge.From.Name + " ↔ " + edge.To.Name, 
+                            Tag = $"{edge.From.Name} ↔ {edge.To.Name}",
 
                         };
                         edgesOverlay.Routes.Add(route);
                     }
+
+
                 }
             }
 
@@ -477,7 +540,7 @@ namespace GrafoElSalvador
             return graph.GetNodeByName(nombre);
         }
 
-        private bool recorridoVisible = false; // Controla si hay un recorrido visible
+        
 
         /// <summary>
         /// Maneja el evento de recorrido en anchura (BFS)
@@ -540,7 +603,7 @@ namespace GrafoElSalvador
         /// </summary>
         private void MostrarRecorrido(List<string> recorrido, string titulo)
         {
-            string mensaje = string.Join(" → ", recorrido);
+            string mensaje = string.Join(" ↔ ", recorrido);
             MessageBox.Show(mensaje, titulo);
         }
 
@@ -574,44 +637,44 @@ namespace GrafoElSalvador
                 edgesOverlay.Routes.Clear();
 
                 var connections = new Dictionary<string, List<string>>
+            {
                 {
-                    {
-                        "Ahuachapán",
-                        new List<string> { "Santa Ana", "Sonsonate" }
-                    },
-                    {
-                        "Sensuntepeque",
-                        new List<string> { "San Vicente", "San Salvador" }
-                    },
-                    {
-                        "Chalatenango",
-                        new List<string> { "Santa Ana", "Cojutepeque", "San Salvador", "Sensuntepeque" }
-                    },
-                    {
-                        "Cojutepeque",
-                        new List<string> { "San Francisco Gotera", "San Vicente" }
-                    },
-                    {
-                        "Santa Tecla (Nueva San Salvador)",
-                        new List<string> { "San Salvador", "Sonsonate", "Santa Ana" }
-                    },
-                    {
-                        "Zacatecoluca",
-                        new List<string> { "San Vicente", "San Salvador", "Usulután" }
-                    },
-                    {
-                        "La Unión",
-                        new List<string> { "San Francisco Gotera", "San Miguel" }
-                    },
-                    {
-                        "San Miguel",
-                        new List<string> { "San Francisco Gotera", "Usulután", "San Vicente" }
-                    },
-                    {
-                        "Santa Ana",
-                        new List<string> { "Sonsonate" }
-                    },
-                };
+                    "Ahuachapán",
+                    new List<string> { "Santa Ana", "Sonsonate" }
+                },
+                {
+                    "Sensuntepeque",
+                    new List<string> { "San Vicente", "San Francisco Gotera"}
+                },
+                {
+                    "Chalatenango",
+                    new List<string> { "Santa Ana", "Cojutepeque", "San Salvador", "Sensuntepeque" }
+                },
+                {
+                    "Cojutepeque",
+                    new List<string> { "San Vicente","San Salvador", }
+                },
+                {
+                    "Santa Tecla (Nueva San Salvador)",
+                    new List<string> { "San Salvador", "Sonsonate", "Santa Ana" }
+                },
+                {
+                    "Zacatecoluca",
+                    new List<string> { "San Vicente", "San Salvador", "Usulután" }
+                },
+                {
+                    "La Unión",
+                    new List<string> { "San Francisco Gotera", "San Miguel" }
+                },
+                {
+                    "San Miguel",
+                    new List<string> { "San Francisco Gotera", "Usulután", "San Vicente" }
+                },
+                {
+                    "Santa Ana",
+                    new List<string> { "Sonsonate" }
+                },
+            };
 
                 // Dibuja cada conexión con retraso para efecto de animación
                 foreach (var connection in connections)
@@ -632,6 +695,7 @@ namespace GrafoElSalvador
                             var route = new GMapRoute(points, $"{fromNode.Name}-{toNode.Name}")
                             {
                                 Stroke = new Pen(Color.Blue, 3),
+                                Tag = $"{fromNode.Name} ↔ {toNode.Name}", // Mostrar en el tooltip
                             };
                             edgesOverlay.Routes.Add(route);
                             gMap.Refresh();

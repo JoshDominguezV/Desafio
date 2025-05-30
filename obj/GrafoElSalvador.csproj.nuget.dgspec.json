@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Josue\\Proyectos\\UDB\\Desafio\\GrafoElSalvador.csproj": {}
+    "C:\\Users\\josue\\source\\repos\\GrafoElSalvador\\GrafoElSalvador.csproj": {}
   },
   "projects": {
-    "C:\\Josue\\Proyectos\\UDB\\Desafio\\GrafoElSalvador.csproj": {
+    "C:\\Users\\josue\\source\\repos\\GrafoElSalvador\\GrafoElSalvador.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Josue\\Proyectos\\UDB\\Desafio\\GrafoElSalvador.csproj",
+        "projectUniqueName": "C:\\Users\\josue\\source\\repos\\GrafoElSalvador\\GrafoElSalvador.csproj",
         "projectName": "GrafoElSalvador",
-        "projectPath": "C:\\Josue\\Proyectos\\UDB\\Desafio\\GrafoElSalvador.csproj",
-        "packagesPath": "C:\\Users\\Josue Dominguez\\.nuget\\packages\\",
-        "outputPath": "C:\\Josue\\Proyectos\\UDB\\Desafio\\obj\\",
+        "projectPath": "C:\\Users\\josue\\source\\repos\\GrafoElSalvador\\GrafoElSalvador.csproj",
+        "packagesPath": "C:\\Users\\josue\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\josue\\source\\repos\\GrafoElSalvador\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Josue Dominguez\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\josue\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -43,8 +39,7 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.300"
+        }
       },
       "frameworks": {
         "net8.0-windows7.0": {
@@ -82,7 +77,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
