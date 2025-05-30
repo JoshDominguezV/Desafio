@@ -11,6 +11,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using System.Xml.Linq;
 
 namespace GrafoElSalvador
@@ -471,6 +472,7 @@ namespace GrafoElSalvador
                     var route = new GMapRoute(points, $"{from.Name}-{to.Name}")
                     {
                         Stroke = new Pen(Color.Red, 3), // Ruta en rojo y más gruesa
+                        Tag = $"{from.Name} ↔ {to.Name}",
                     };
                     edgesOverlay.Routes.Add(route);
                     totalDistancia += routeService.GetDistance(from, to);
